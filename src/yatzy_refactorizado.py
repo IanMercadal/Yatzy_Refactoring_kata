@@ -95,4 +95,21 @@ class Yatzy:
             if dice.count(numero) != 1:
                 return 0
             return Yatzy.chance(*dice)
-    ## Aquí van dos clases static que no se muy bien que hacen
+    @staticmethod
+    def fullHouse(*dice):
+        total = 0
+        pair = False
+        three_of_a_kind = False
+        ordered_dice = sorted(dice, reverse=True)
+        last_number = ""
+        for number in ordered_dice:
+            if number == last_number:
+                pass
+            elif ordered_dice.count(number) == 2:
+                total += number * 3
+                three_of_a_kind = True
+            last_number = number
+        if pair == True and three_of_a_kind == True:
+            return total
+        else:
+            return 0
